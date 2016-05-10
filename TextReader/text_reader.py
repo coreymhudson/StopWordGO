@@ -28,7 +28,9 @@ class TextReader(object):
     def _remove_extraneous_characters(self, document):
         '''Remove all the extraneous characters from the document'''
         _table = string.maketrans("", "")
-        return ' '.join(document.replace('\n', ' ').replace('\r', ' ').replace('\t', ' ').replace('\s+', ' ').translate(_table, string.punctuation).split())
+        return ' '.join(document.replace('\n', ' ').replace('\r',
+                        ' ').replace('\t', ' ').replace('\s+',
+                        ' ').translate(_table, string.punctuation).split())
 
     def _lower_case(self, document):
         return document.lower()
