@@ -16,6 +16,9 @@ class Create(object):
             BiGramGraph.add_edge(*e)
         self.graph = BiGramGraph
 
+    def get_graph(self):
+        return(self.graph)
+
     def __init__(self, filename):
         self.tr = text_reader.TextReader(filename=filename)
         self.tr.read_file()

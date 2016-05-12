@@ -1,13 +1,34 @@
 """Graph algorithms"""
 
 import networkx as nx
-from scipy.sparse import tril, triu
+from scipy.sparse import tril, triu, identity
 import numpy as np
 from operator import itemgetter
 
 
-def sparse_transitivity(Graph):
+def nodes_to_index(Graph):
+    nodes_index = {}
+    return nodes_index
+
+
+def graph_to_sparse(Graph):
     A = nx.to_scipy_sparse_matrix(Graph)
+    return A
+
+
+def remove_list_from_identity(I, node_list):
+    for node in node_list:
+        I[node][node] = 0
+    return I
+
+
+def sparse_identity(Graph):
+    I = identity(len(Graph.nodes()))
+    return I
+
+
+def sparse_transitivity(Graph):
+    A = graph_to_sparse(Graph)
     k = A.sum(axis=0)
     k_minus_1 = k - 1
     Wv = np.sum(np.multiply(k, k_minus_1) / 2.)

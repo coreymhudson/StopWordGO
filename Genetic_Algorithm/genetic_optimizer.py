@@ -31,8 +31,7 @@ def duplicate_and_reduce_graph(Graph, individual):
     return Duplicated
 
 
-def evolve(sorted_nodes, pop_size, target, Graph, retain, random_select, mutate):
-    population = create_population(pop_size, sorted_nodes, rate)
+def evolve(sorted_nodes, population, target, Graph, retain, random_select, mutate):
     graded = [(fitness(Graph, individual, target), individual) for individual in population]
     graded = [x[1] for x in sorted(graded)]
     retain_length = int(len(graded) * retain)
